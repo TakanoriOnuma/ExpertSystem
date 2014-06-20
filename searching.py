@@ -20,10 +20,6 @@ while line:
         line = f.readline()
     line_rules.append(string)
 
-for r in line_rules:
-    print r
-print '----------------------'
-
 # ルールの作成
 rules = {}
 for line in line_rules:
@@ -37,6 +33,8 @@ for line in line_rules:
     str_Then = line[idx_Then + 4:].strip()
     rules[R] = {'If':list_If, 'Then':str_Then}
 
+# ルールを表示
+print '------- output rules -------'
 for R in rules:
     print R, ':',
     for str_If in rules[R]['If']:
