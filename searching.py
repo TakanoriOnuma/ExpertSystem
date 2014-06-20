@@ -51,11 +51,29 @@ for ch_word in check_words:
         idx = ch_idx
 
 word_X = word[:idx]
-print "X =", word_X
 
 # 入力情報をXに置き換え
 for i in range(len(list_info)):
     list_info[i] = list_info[i].replace(word_X, u'X')
 
+for R in rules:
+    print R, ':',
+    for li in rules[R]['If']:
+        print li, ',',
+    print rules[R]['Then']
+
 for li in list_info:
     print li
+
+isChange = True
+while isChange:
+    isChange = False
+    for R in rules:
+        isAllApply = True
+        for rule in rules[R]['If']:
+            if (rule in list_info) == False:
+                isAllApply = False
+                break
+
+        if isAllApply:
+            print R, "is OK."
