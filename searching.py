@@ -14,15 +14,13 @@ while line:
 # ルールを分類
 while line:
     R  = line[0:line.find('\t')]
-    li = [line]
+    string = line[0:-1]
     line = f.readline()
     while line.startswith(u'R', 0, 1) == False and line:
-        li.append(line)
+        string += line[0:-1]
         line = f.readline()
-    rule[R] = li
-rule[R] = li
+    rule[R] = string
+rule[R] = string
 
 for r in rule:
-    print r,
-    for word in rule[r]:
-        print word,
+    print r, rule[r]
