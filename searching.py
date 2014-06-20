@@ -56,16 +56,20 @@ word_X = word[:idx]
 for i in range(len(list_info)):
     list_info[i] = list_info[i].replace(word_X, u'X')
 
+# ルールや入力データを出力
+print '---------- rules ----------'
 for R in rules:
     print R, ':',
     for li in rules[R]['If']:
         print li, ',',
     print rules[R]['Then']
 
+print '---------- infomation ----------'
 for li in list_info:
     print li
 
 # 推論を行う
+print '---------- predict phase ----------'
 isChange = True
 while isChange:
     isChange = False
@@ -81,11 +85,9 @@ while isChange:
                 isChange = True
                 list_info.append(rules[R]['Then'])
                 print R, 'is OK.'
-
-# リストの表示
-for li in list_info:
-    print li
+                print R, ':', ' , '.join(rules[R]['If']) , '->', rules[R]['Then']
 
 # 結論
+print '---------- conclusion ----------'
 result = list_info[-1].replace(u'X', word_X)[1:-1]
 print result
