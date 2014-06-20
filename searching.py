@@ -85,3 +85,7 @@ while isChange:
 # リストの表示
 for li in list_info:
     print li
+
+# 結論
+result = list_info[-1].replace(u'X', word_X)[1:-1]
+print result
