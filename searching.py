@@ -31,6 +31,12 @@ for line in line_rules:
     R = line[0:idx_If].strip()
     idx_Then = line.find(u'Then')
     str_If = line[idx_If + 2:idx_Then].strip()
+    list_If = str_If.split(u',')
+    for i in range(len(list_If)):
+        list_If[i] = list_If[i].strip()
     str_Then = line[idx_Then + 4:].strip()
-    print R, ':', str_If, '->', str_Then
+    print R, ':',
+    for str_If in list_If:
+        print str_If, ',',
+    print '->' , str_Then
     
