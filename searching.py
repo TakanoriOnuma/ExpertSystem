@@ -22,3 +22,15 @@ while line:
 
 for r in line_rules:
     print r
+print '----------------------'
+
+# ルールの作成
+rules = {}
+for line in line_rules:
+    idx_If = line.find(u'If')
+    R = line[0:idx_If].strip()
+    idx_Then = line.find(u'Then')
+    str_If = line[idx_If + 2:idx_Then].strip()
+    str_Then = line[idx_Then + 4:].strip()
+    print R, ':', str_If, '->', str_Then
+    
