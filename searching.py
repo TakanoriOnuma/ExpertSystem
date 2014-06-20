@@ -35,8 +35,10 @@ for line in line_rules:
     for i in range(len(list_If)):
         list_If[i] = list_If[i].strip()
     str_Then = line[idx_Then + 4:].strip()
+    rules[R] = {'If':list_If, 'Then':str_Then}
+
+for R in rules:
     print R, ':',
-    for str_If in list_If:
+    for str_If in rules[R]['If']:
         print str_If, ',',
-    print '->' , str_Then
-    
+    print '->' , rules[R]['Then']  
