@@ -65,6 +65,7 @@ for R in rules:
 for li in list_info:
     print li
 
+# 推論を行う
 isChange = True
 while isChange:
     isChange = False
@@ -76,4 +77,11 @@ while isChange:
                 break
 
         if isAllApply:
-            print R, "is OK."
+            if (rules[R]['Then'] in list_info) == False:
+                isChange = True
+                list_info.append(rules[R]['Then'])
+                print R, 'is OK.'
+
+# リストの表示
+for li in list_info:
+    print li
