@@ -33,10 +33,11 @@ for line in line_rules:
     str_Then = line[idx_Then + 4:].strip()
     rules[R] = {'If':list_If, 'Then':str_Then}
 
-# ルールを表示
-print '------- output rules -------'
-for R in rules:
-    print R, ':',
-    for str_If in rules[R]['If']:
-        print str_If, ',',
-    print '->' , rules[R]['Then']  
+# 入力情報の作成
+f = io.open('info.dat', 'r', encoding = 'utf_8_sig')
+list_info = []
+for line in f:
+    list_info.append(line[line.find('('):].strip())
+
+for li in list_info:
+    print li
