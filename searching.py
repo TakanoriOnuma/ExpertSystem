@@ -39,5 +39,16 @@ list_info = []
 for line in f:
     list_info.append(line[line.find('('):].strip())
 
-for li in list_info:
-    print li
+# X情報の取得
+word = list_info[0][1:-1]
+check_words = [u'は', u'の'];
+idx = len(word)
+for ch_word in check_words:
+    ch_idx = word.find(ch_word)
+    if ch_idx == -1:
+        ch_idx = len(word)
+    if idx > ch_idx:
+        idx = ch_idx
+
+word_X = word[:idx]
+print "X =", word_X
