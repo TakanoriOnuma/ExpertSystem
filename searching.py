@@ -33,10 +33,29 @@ for line in line_rules:
     str_Then = line[idx_Then + 4:].strip()
     rules[R] = {'If':list_If, 'Then':str_Then}
 
-# ルールを表示
-print '------- output rules -------'
-for R in rules:
-    print R, ':',
-    for str_If in rules[R]['If']:
-        print str_If, ',',
-    print '->' , rules[R]['Then']  
+# 入力情報の作成
+f = io.open('info.dat', 'r', encoding = 'utf_8_sig')
+list_info = []
+for line in f:
+    list_info.append(line[line.find('('):].strip())
+
+# X情報の取得
+word = list_info[0][1:-1]
+check_words = [u'は', u'の'];
+idx = len(word)
+for ch_word in check_words:
+    ch_idx = word.find(ch_word)
+    if ch_idx == -1:
+        ch_idx = len(word)
+    if idx > ch_idx:
+        idx = ch_idx
+
+word_X = word[:idx]
+print "X =", word_X
+
+# 入力情報をXに置き換え
+for i in range(len(list_info)):
+    list_info[i] = list_info[i].replace(word_X, u'X')
+
+for li in list_info:
+    print li
