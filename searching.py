@@ -2,7 +2,7 @@
 
 import io
 
-rule = {}
+line_rules = []
 f = io.open('animal.rule', 'r', encoding = 'utf_8_sig')
 
 line = f.readline()
@@ -11,16 +11,14 @@ while line:
         break
     line = f.readline()
 
-# ルールを分類
+# ルールを分割
 while line:
-    R  = line[0:line.find('\t')]
     string = line[0:-1]
     line = f.readline()
     while line.startswith(u'R', 0, 1) == False and line:
         string += line[0:-1]
         line = f.readline()
-    rule[R] = string
-rule[R] = string
+    line_rules.append(string)
 
-for r in rule:
-    print r, rule[r]
+for r in line_rules:
+    print r
