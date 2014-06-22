@@ -59,10 +59,7 @@ for i in range(len(list_info)):
 # ルールや入力データを出力
 print '---------- rules ----------'
 for R in rules:
-    print R, ':',
-    for li in rules[R]['If']:
-        print li, ',',
-    print rules[R]['Then']
+    print R, ':', ', '.join(rules[R]['If']) , '->', rules[R]['Then']
 
 print '---------- infomation ----------'
 for li in list_info:
@@ -85,7 +82,7 @@ while isChange:
                 isChange = True
                 list_info.append(rules[R]['Then'])
                 print R, 'is OK.'
-                print R, ':', ' , '.join(rules[R]['If']) , '->', rules[R]['Then']
+                print R, ':', ', '.join(rules[R]['If']) , '->', rules[R]['Then']
 
 # 結論
 print '---------- conclusion ----------'
