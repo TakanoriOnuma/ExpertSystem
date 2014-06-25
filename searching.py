@@ -49,17 +49,17 @@ for li in list_info:
     print li
     
 # X情報の取得
-word = list_info[0][1:-1]
-check_words = [u'は', u'の'];
-idx = len(word)
-for ch_word in check_words:
-    ch_idx = word.find(ch_word)
-    if ch_idx == -1:
-        ch_idx = len(word)
-    if idx > ch_idx:
-        idx = ch_idx
+word_X = list_info[0][1:]
+for i in range(len(list_info[0][1:-1])):
+    word_X = word_X[:-1]
+    flag = True
+    for ch_word in list_info:
+        # 先頭に同じ文字を見つけられなかったら
+        if ch_word.find(word_X) != 1:
+            flag = False
+    if flag:
+        break
 
-word_X = word[:idx]
 print 'X =', word_X
 
 # 入力情報をXに置き換え
