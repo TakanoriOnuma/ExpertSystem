@@ -39,6 +39,15 @@ list_info = []
 for line in f:
     list_info.append(line[line.find('('):].strip())
 
+# ルールや入力データを出力
+print '---------- rules ----------'
+for R in rules:
+    print R, ':', ', '.join(rules[R]['If']) , '->', rules[R]['Then']
+
+print '---------- infomation ----------'
+for li in list_info:
+    print li
+    
 # X情報の取得
 word = list_info[0][1:-1]
 check_words = [u'は', u'の'];
@@ -51,19 +60,11 @@ for ch_word in check_words:
         idx = ch_idx
 
 word_X = word[:idx]
+print 'X =', word_X
 
 # 入力情報をXに置き換え
 for i in range(len(list_info)):
     list_info[i] = list_info[i].replace(word_X, u'X')
-
-# ルールや入力データを出力
-print '---------- rules ----------'
-for R in rules:
-    print R, ':', ', '.join(rules[R]['If']) , '->', rules[R]['Then']
-
-print '---------- infomation ----------'
-for li in list_info:
-    print li
 
 # 推論を行う
 print '---------- predict phase ----------'
