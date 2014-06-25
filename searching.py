@@ -60,6 +60,10 @@ for i in range(len(list_info[0][1:-1])):
     if flag:
         break
 
+check_words = [u'は', u'の'];
+if word_X[-1] in check_words:
+    word_X = word_X[:-1]
+
 print 'X =', word_X
 
 # 入力情報をXに置き換え
