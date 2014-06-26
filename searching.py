@@ -3,7 +3,8 @@
 import io
 
 line_rules = []
-f = io.open('food.rule', 'r', encoding = 'utf_8_sig')
+rule_filename = raw_input('input rule file: ')
+f = io.open(rule_filename, 'r', encoding = 'utf_8_sig')
 
 line = f.readline()
 while line:
@@ -33,16 +34,17 @@ for line in line_rules:
     str_Then = line[idx_Then + 4:].strip()
     rules[R] = {'If':list_If, 'Then':str_Then}
 
-# 入力情報の作成
-f = io.open('info3.dat', 'r', encoding = 'utf_8_sig')
-list_info = []
-for line in f:
-    list_info.append(line[line.find('('):].strip())
-
 # ルールや入力データを出力
 print '---------- rules ----------'
 for R in rules:
     print R, ':', ', '.join(rules[R]['If']) , '->', rules[R]['Then']
+
+# 入力情報の作成
+info_filename = raw_input('input information file: ')
+f = io.open(info_filename, 'r', encoding = 'utf_8_sig')
+list_info = []
+for line in f:
+    list_info.append(line[line.find('('):].strip())
 
 print '---------- infomation ----------'
 for li in list_info:
