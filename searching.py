@@ -3,7 +3,7 @@
 import io
 
 line_rules = []
-f = io.open('animal.rule', 'r', encoding = 'utf_8_sig')
+f = io.open('food.rule', 'r', encoding = 'utf_8_sig')
 
 line = f.readline()
 while line:
@@ -34,7 +34,7 @@ for line in line_rules:
     rules[R] = {'If':list_If, 'Then':str_Then}
 
 # 入力情報の作成
-f = io.open('info.dat', 'r', encoding = 'utf_8_sig')
+f = io.open('info3.dat', 'r', encoding = 'utf_8_sig')
 list_info = []
 for line in f:
     list_info.append(line[line.find('('):].strip())
