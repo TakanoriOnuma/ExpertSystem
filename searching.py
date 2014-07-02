@@ -15,20 +15,20 @@ while line:
 line_rules = []
 while line:
     string = line[0:-1]
-    line = f.readline()
+    line   = f.readline()
     while line.startswith(u'R', 0, 1) == False and line:
         string += line[0:-1]
-        line = f.readline()
+        line    = f.readline()
     line_rules.append(string)
 
 # ルールの作成
 rules = {}
 for line in line_rules:
-    idx_If = line.find(u'If')
-    R = line[0:idx_If].strip()
+    idx_If   = line.find(u'If')
+    R        = line[0:idx_If].strip()
     idx_Then = line.find(u'Then')
-    str_If = line[idx_If + 2:idx_Then].strip()
-    list_If = [li.strip() for li in str_If.split(u',')]
+    str_If   = line[idx_If + 2:idx_Then].strip()
+    list_If  = [li.strip() for li in str_If.split(u',')]
     str_Then = line[idx_Then + 4:].strip()
     rules[R] = {'If':list_If, 'Then':str_Then}
 
@@ -40,9 +40,7 @@ for R in rules:
 # 入力情報の作成
 info_filename = raw_input('input information file: ')
 f = io.open(info_filename, 'r', encoding = 'utf_8_sig')
-list_info = []
-for line in f:
-    list_info.append(line[line.find('('):].strip())
+list_info = [line[line.find('('):].strip() for line in f]
 
 print '---------- infomation ----------'
 for li in list_info:
@@ -76,6 +74,7 @@ while isChange:
         match_list = [rule for rule in rules[R]['If'] if rule in list_info]
         # 全ての条件がマッチしていたら
         if len(match_list) == len(rules[R]['If']):
+            # まだこの結論が出ていなければ
             if (rules[R]['Then'] in list_info) == False:
                 isChange = True
                 list_info.append(rules[R]['Then'])
