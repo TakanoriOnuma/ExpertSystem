@@ -50,16 +50,14 @@ for li in list_info:
     
 # X情報の取得
 word_X = list_info[0][1:]
-for i in range(len(list_info[0][1:-1])):
+# 先頭から全入力情報でマッチする文字列を見つける
+while True:
     word_X = word_X[:-1]
-    flag = True
-    for ch_word in list_info:
-        # 先頭に同じ文字を見つけられなかったら
-        if ch_word.find(word_X) != 1:
-            flag = False
-    if flag:
+    unmatch_list = [li for li in list_info if li.find(word_X) != 1]
+    if len(unmatch_list) == 0:
         break
 
+# 接続詞までマッチしてしまってないかチェック
 check_words = [u'は', u'の'];
 if word_X[-1] in check_words:
     word_X = word_X[:-1]
