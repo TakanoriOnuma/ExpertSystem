@@ -73,13 +73,9 @@ isChange = True
 while isChange:
     isChange = False
     for R in rules:
-        isAllApply = True
-        for rule in rules[R]['If']:
-            if (rule in list_info) == False:
-                isAllApply = False
-                break
-
-        if isAllApply:
+        match_list = [rule for rule in rules[R]['If'] if rule in list_info]
+        # 全ての条件がマッチしていたら
+        if len(match_list) == len(rules[R]['If']):
             if (rules[R]['Then'] in list_info) == False:
                 isChange = True
                 list_info.append(rules[R]['Then'])
