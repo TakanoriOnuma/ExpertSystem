@@ -6,9 +6,7 @@ rule_filename = raw_input('input rule file: ')
 f = io.open(rule_filename, 'r', encoding = 'utf_8_sig')
 
 line = f.readline()
-while line:
-    if line.startswith(u'R', 0, 1):
-        break
+while line.startswith(u'R', 0, 1) == False and line:
     line = f.readline()
 
 # 1ルールにつき1行にまとめる
