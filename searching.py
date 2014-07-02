@@ -28,9 +28,7 @@ for line in line_rules:
     R = line[0:idx_If].strip()
     idx_Then = line.find(u'Then')
     str_If = line[idx_If + 2:idx_Then].strip()
-    list_If = str_If.split(u',')
-    for i in range(len(list_If)):
-        list_If[i] = list_If[i].strip()
+    list_If = [li.strip() for li in str_If.split(u',')]
     str_Then = line[idx_Then + 4:].strip()
     rules[R] = {'If':list_If, 'Then':str_Then}
 
@@ -69,8 +67,7 @@ if word_X[-1] in check_words:
 print 'X =', word_X
 
 # 入力情報をXに置き換え
-for i in range(len(list_info)):
-    list_info[i] = list_info[i].replace(word_X, u'X')
+list_info = [li.replace(word_X, u'X') for li in list_info]
 
 # 推論を行う
 print '---------- predict phase ----------'
