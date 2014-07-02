@@ -2,7 +2,6 @@
 
 import io
 
-line_rules = []
 rule_filename = raw_input('input rule file: ')
 f = io.open(rule_filename, 'r', encoding = 'utf_8_sig')
 
@@ -12,7 +11,8 @@ while line:
         break
     line = f.readline()
 
-# ルールを分割
+# 1ルールにつき1行にまとめる
+line_rules = []
 while line:
     string = line[0:-1]
     line = f.readline()
